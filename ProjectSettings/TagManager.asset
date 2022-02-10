@@ -7,6 +7,10 @@ TagManager:
   - Player1
   - Player2
   - SplitCamera
+  - Gem
+  - Coin
+  - Potion
+  - MovementController
   layers:
   - Default
   - TransparentFX

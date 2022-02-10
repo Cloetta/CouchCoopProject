@@ -12,7 +12,8 @@ public class Movement : MonoBehaviour
     //Rigidbody2D rbodyTwo;
 
 
-    public float playerSpeed;
+    public float playerOneSpeed;
+    public float playerTwoSpeed;
 
 
 
@@ -25,7 +26,8 @@ public class Movement : MonoBehaviour
         //rbodyTwo = playerTwo.GetComponent<Rigidbody2D>();
 
 
-        playerSpeed = 5f;
+        playerOneSpeed = 5f;
+        playerTwoSpeed = 5f;
     }
 
     // Update is called once per frame
@@ -48,38 +50,38 @@ public class Movement : MonoBehaviour
         //Player1 movement keys
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            playerOne.transform.position += Vector3.right * playerSpeed * Time.deltaTime;
+            playerOne.transform.position += Vector3.right * playerOneSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            playerOne.transform.position += Vector3.left * playerSpeed * Time.deltaTime;
+            playerOne.transform.position += Vector3.left * playerOneSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            playerOne.transform.position += Vector3.up * playerSpeed * Time.deltaTime;
+            playerOne.transform.position += Vector3.up * playerOneSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            playerOne.transform.position += Vector3.down * playerSpeed * Time.deltaTime;
+            playerOne.transform.position += Vector3.down * playerOneSpeed * Time.deltaTime;
         }
 
 
         //Player2 movement keys
         if (Input.GetKey(KeyCode.D))
         {
-            playerTwo.transform.position += Vector3.right * playerSpeed * Time.deltaTime;
+            playerTwo.transform.position += Vector3.right * playerTwoSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            playerTwo.transform.position += Vector3.left * playerSpeed * Time.deltaTime;
+            playerTwo.transform.position += Vector3.left * playerTwoSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.W))
         {
-            playerTwo.transform.position += Vector3.up* playerSpeed * Time.deltaTime;
+            playerTwo.transform.position += Vector3.up* playerTwoSpeed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            playerTwo.transform.position += Vector3.down * playerSpeed * Time.deltaTime;
+            playerTwo.transform.position += Vector3.down * playerTwoSpeed * Time.deltaTime;
         }
 
     }

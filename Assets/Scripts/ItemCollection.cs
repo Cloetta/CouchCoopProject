@@ -4,26 +4,56 @@ using UnityEngine;
 
 public class ItemCollection: MonoBehaviour
 {
-    public bool canPickup = false;
+    public bool p1canPickup = false;
+    public bool p2canPickup = false;
 
-    //public ItemsManager item;
+    //Scripts objects to get access to other scripts variables
+    public Movement playerBoost;
+    public ScoreHolder score;
+
+
+    private void Start()
+    {
+        playerBoost = GameObject.FindGameObjectWithTag("MovementController").GetComponent<Movement>();
+        score = GameObject.FindGameObjectWithTag("MovementController").GetComponent<ScoreHolder>();
+    }
+
 
     void Update()
     {
-        if (canPickup == true && Input.GetKeyDown(KeyCode.E))
+        if (p1canPickup == true && Input.GetKeyDown(KeyCode.Keypad1))
         {
-
-
             PickUpItem();
 
-            //Possible implementation: text appears on screen? On hover on the item to inform the player of the item stats/skills effects?
+            BonusPlayerOne();
+
+            //Possible implementation: text appears on screen for the time of the bonus? try the countdown here to bring the value back to normal again
         }
-        else if (canPickup == false && Input.GetKeyDown(KeyCode.E))
+        else if (p1canPickup == false && Input.GetKeyDown(KeyCode.Keypad1))
         {
-            Debug.Log("Not in range");
+            Debug.Log("P1 not in range");
 
             //nothing happens
         }
+
+
+        if (p2canPickup == true && Input.GetKeyDown(KeyCode.E))
+        {
+            PickUpItem();
+
+            BonusPlayerTwo();
+            
+            //Possible implementation: text appears on screen for the time of the bonus? try the countdown here to bring the value back to normal again
+        }
+        else if (p2canPickup == false && Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("P2 not in range");
+
+
+            //nothing happens
+        }
+
+
     }
 
     //Check collision with the player to determine if we can interact with the item or not
@@ -31,7 +61,11 @@ public class ItemCollection: MonoBehaviour
     {
         if (collidedObject.tag == "Player1")
         {
-            canPickup = true;
+            p1canPickup = true;
+        }
+        else if (collidedObject.tag == "Player2")
+        {
+            p2canPickup = true;
         }
     }
 
@@ -40,9 +74,12 @@ public class ItemCollection: MonoBehaviour
     {
         if (collidedObject.tag == "Player1")
         {
-            canPickup = false;
+            p1canPickup = false;
         }
-
+        else if (collidedObject.tag == "Player2")
+        {
+            p2canPickup = false;
+        }
     }
 
 
@@ -53,7 +90,6 @@ public class ItemCollection: MonoBehaviour
 
         Debug.Log("Picked up: " + this.name);
 
-        //Item is added to the inventory
         bool pickedUp = true;
 
         if (pickedUp == true)
@@ -62,5 +98,57 @@ public class ItemCollection: MonoBehaviour
             Destroy(gameObject);
         }
 
+    }
+
+    void BonusPlayerOne()
+    {
+        if (gameObject.tag == "Gem")
+        {
+            score.playerOneScore += 5;
+        }
+        else if (gameObject.tag == "Coin")
+        {
+            score.playerOneScore += 2;
+        }
+        else if (gameObject.tag == "Potion")
+        {
+            playerBoost.playerOneSpeed += 5;
+
+            float bonusTime = 4f;
+
+            bonusTime -= Time.deltaTime;
+
+            if (bonusTime <= 0.0f)
+            {
+                playerBoost.playerOneSpeed -= 5f;
+                Debug.Log("P2 end of bonus: " + playerBoost.playerOneSpeed);
+            }
+        }
+    }
+
+    void BonusPlayerTwo()
+    {
+        if (gameObject.tag == "Gem")
+        {
+            score.playerTwoScore += 5;
+        }
+        else if (gameObject.tag == "Coin")
+        {
+            score.playerTwoScore += 2;
+        }
+        else if (gameObject.tag == "Potion")
+        {
+            playerBoost.playerTwoSpeed += 5;
+
+            //this is not working, find out why
+            float bonusTime = 4f;
+
+            bonusTime -= Time.deltaTime;
+
+            if (bonusTime <= 0.0f)
+            {
+                playerBoost.playerTwoSpeed = 5f;
+            }
+        }
     }
 }
