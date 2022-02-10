@@ -2,70 +2,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-   
-    public Text txtCooldown;
+    //public Text playerOneName;
+    //public Text playerTwoName;
 
-    public bool isCountdown = false;
-    public float countdownTimer = 60f;
+    public static GameManager instance = null;
+
+    public string player1Name;
+    public string player2Name;
 
 
     void Awake()
     {
-        //buttonOnKey = GetComponent<Button>();
+        if (instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
 
+        instance = this;
+
+        //Sets this to not be destroyed when reloading scene
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
     {
-        //txtCooldown.gameObject.SetActive(false);
-        //imgCooldown.fillAmount = 0f;
+        
     }
 
 
     void Update()
     {
-        GameCountdown();
         
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            countdownTimer = 60f;
+    }
+    
 
-        }
-
-
-        if (isCountdown == false)
-        {
-            //stop time and pop up message: time's up!
-
-            //loadscene p1 or p2 win, check if we need the condition here or later
-        }
-
-
-
+    //At the end of the level runs the next scene which will reveal if player one or player 2 is the winner
+    void EndLevel()
+    {
+        //SceneManager.LoadScene("MatchEnd");
     }
 
-    void GameCountdown()
+
+    public void OnStartButton()
     {
-        //Subtrack time since last called
-        countdownTimer -= Time.deltaTime;
 
-        //Condition to make the text and the filler of the image active according to the status of the skill
-        if (countdownTimer <= 0.0f)
-        {
-            isCountdown = false;
-
-            //txtCooldown.gameObject.SetActive(false);
-            //imgCooldown.fillAmount = 0.0f;
-        }
-        else
-        {
-            txtCooldown.text = Mathf.RoundToInt(countdownTimer).ToString();
-            //txtCooldown.text = cooldownTimer.ToString();
-            //imgCooldown.fillAmount = cooldownTimer / skill.skillCooldown;
-        }
+        SceneManager.LoadScene("Level1");
 
     }
 }
+
+
+
