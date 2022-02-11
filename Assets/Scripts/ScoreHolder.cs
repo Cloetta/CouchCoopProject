@@ -58,7 +58,7 @@ public class ScoreHolder : MonoBehaviour
         gameManager.player1Score = playerOneScore;
         gameManager.player2Score = playerTwoScore;
 
-        Debug.Log(gameManager.player2Score);
+        
     }
 
 }

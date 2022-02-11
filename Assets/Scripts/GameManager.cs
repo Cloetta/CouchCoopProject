@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
 
         SceneManager.LoadScene("Level1");
 
+        
+
     }
 }
 

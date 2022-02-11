@@ -881,9 +881,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 366094628091305400}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnStartButton
+      - m_Target: {fileID: 504148035}
+        m_TargetAssemblyTypeName: WinManager, Assembly-CSharp
+        m_MethodName: LoadLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
