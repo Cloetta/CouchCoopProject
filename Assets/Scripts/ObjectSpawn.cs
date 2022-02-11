@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ObjectSpawn : MonoBehaviour
 {
 
     public Text txtCooldown;
 
-    public bool isCountdown = false;
+    public bool isTimeOver = false;
     public float countdownTimer = 60f;
 
     public int numberToSpawn;
@@ -25,19 +26,18 @@ public class ObjectSpawn : MonoBehaviour
     {
         GameCountdown();
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            countdownTimer = 60f;
+        //Used for debugging
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    countdownTimer = 60f;
 
+        //}
+
+        if (isTimeOver == true)
+        {
+            SceneManager.LoadScene("EndScene");
         }
 
-        if (isCountdown == false)
-        {
-            //stop time and pop up message: time's up!
-
-            //loadscene p1 or p2 win, check if we need the condition here or later
-
-        }
     }
 
     public void spawnObjects()
@@ -75,8 +75,9 @@ public class ObjectSpawn : MonoBehaviour
         //Condition to make the text and the filler of the image active according to the status of the skill
         if (countdownTimer <= 0.0f)
         {
-            isCountdown = false;
+            isTimeOver = true;
 
+            
             //txtCooldown.gameObject.SetActive(false);
             //imgCooldown.fillAmount = 0.0f;
         }

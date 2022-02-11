@@ -112,17 +112,20 @@ public class ItemCollection: MonoBehaviour
         }
         else if (gameObject.tag == "Potion")
         {
-            playerBoost.playerOneSpeed += 5;
+            score.playerOneScore -= 3;
 
-            float bonusTime = 4f;
+            //Check this later on
+            //playerBoost.playerOneSpeed += 5;
 
-            bonusTime -= Time.deltaTime;
+            //float bonusTime = 4f;
 
-            if (bonusTime <= 0.0f)
-            {
-                playerBoost.playerOneSpeed -= 5f;
-                Debug.Log("P2 end of bonus: " + playerBoost.playerOneSpeed);
-            }
+            //bonusTime -= Time.deltaTime;
+
+            //if (bonusTime <= 0.0f)
+            //{
+            //    playerBoost.playerOneSpeed -= 5f;
+            //    Debug.Log("P2 end of bonus: " + playerBoost.playerOneSpeed);
+            //}
         }
     }
 
@@ -138,17 +141,20 @@ public class ItemCollection: MonoBehaviour
         }
         else if (gameObject.tag == "Potion")
         {
-            playerBoost.playerTwoSpeed += 5;
+            score.playerTwoScore -= 3;
 
-            //this is not working, find out why
-            float bonusTime = 4f;
+            //Test later on
+            //playerBoost.playerTwoSpeed += 5;
 
-            bonusTime -= Time.deltaTime;
+            ////this is not working, find out why
+            //float bonusTime = 4f;
 
-            if (bonusTime <= 0.0f)
-            {
-                playerBoost.playerTwoSpeed = 5f;
-            }
+            //bonusTime -= Time.deltaTime;
+
+            //if (bonusTime <= 0.0f)
+            //{
+            //    playerBoost.playerTwoSpeed = 5f;
+            //}
         }
     }
 }

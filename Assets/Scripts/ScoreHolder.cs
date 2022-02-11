@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreHolder : MonoBehaviour
 {
+    public ScoreSave scoreSave;
     private GameManager gameManager;
     public int playerOneScore;
     public int playerTwoScore;
@@ -15,6 +16,22 @@ public class ScoreHolder : MonoBehaviour
 
     public Text txtScoreOne;
     public Text txtScoreTwo;
+
+    //public static ScoreHolder instance = null;
+
+    //void Awake()
+    //{
+    //    if (instance != null)
+    //    {
+    //        Destroy(this.gameObject);
+    //        return;
+    //    }
+
+    //    instance = this;
+
+    //    //Sets this to not be destroyed when reloading scene
+    //    DontDestroyOnLoad(this.gameObject);
+    //}
 
 
     // Start is called before the first frame update
@@ -37,5 +54,15 @@ public class ScoreHolder : MonoBehaviour
     {
         txtScoreOne.text = playerOneScore.ToString();
         txtScoreTwo.text = playerTwoScore.ToString();
+
+        scoreSave.player1Score = playerOneScore;
+        scoreSave.player2Score = playerTwoScore;
+       
+    }
+
+    public void ResetScore()
+    {
+        playerOneScore = 0;
+        playerTwoScore = 0;
     }
 }

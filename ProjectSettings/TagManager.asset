@@ -11,6 +11,9 @@ TagManager:
   - Coin
   - Potion
   - MovementController
+  - Win1
+  - Win2
+  - Draft
   layers:
   - Default
   - TransparentFX

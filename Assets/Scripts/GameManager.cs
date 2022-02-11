@@ -9,12 +9,16 @@ public class GameManager : MonoBehaviour
     //public Text playerOneName;
     //public Text playerTwoName;
 
+   
     public static GameManager instance = null;
 
     public string player1Name;
     public string player2Name;
 
+    public int player1Score;
+    public int player2Score;
 
+    
     void Awake()
     {
         if (instance != null)
@@ -31,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        
+ 
     }
 
 
