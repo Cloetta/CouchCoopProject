@@ -6,10 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    //public Text playerOneName;
-    //public Text playerTwoName;
-
-   
+ 
     public static GameManager instance = null;
 
     public string player1Name;
@@ -35,20 +32,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
- 
+        player1Score = 0;
+        player2Score = 0;
     }
 
 
     void Update()
-    {
-        
-    }
-    
+    {       
 
-    //At the end of the level runs the next scene which will reveal if player one or player 2 is the winner
-    void EndLevel()
-    {
-        //SceneManager.LoadScene("MatchEnd");
+        
     }
 
 

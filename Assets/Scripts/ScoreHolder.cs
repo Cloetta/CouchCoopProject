@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreHolder : MonoBehaviour
 {
-    public ScoreSave scoreSave;
+    
     private GameManager gameManager;
     public int playerOneScore;
     public int playerTwoScore;
@@ -55,14 +55,10 @@ public class ScoreHolder : MonoBehaviour
         txtScoreOne.text = playerOneScore.ToString();
         txtScoreTwo.text = playerTwoScore.ToString();
 
-        scoreSave.player1Score = playerOneScore;
-        scoreSave.player2Score = playerTwoScore;
-       
+        gameManager.player1Score = playerOneScore;
+        gameManager.player2Score = playerTwoScore;
+
+        Debug.Log(gameManager.player2Score);
     }
 
-    public void ResetScore()
-    {
-        playerOneScore = 0;
-        playerTwoScore = 0;
-    }
 }

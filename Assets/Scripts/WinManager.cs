@@ -5,17 +5,18 @@ using UnityEngine.UI;
 
 public class WinManager : MonoBehaviour
 {
+    
+    public GameManager gameManager;
+    
 
-    ScoreSave scoreSave;
-
-    GameObject winOne;
-    GameObject winTwo;
-    GameObject draft;
+    public GameObject winOne;
+    public GameObject winTwo;
+    public GameObject draft;
 
     public Text playerOneName;
     public Text playerOneScore;
     public Text playerTwoName;
-    public Text plyerTwoScore;
+    public Text playerTwoScore;
 
     [SerializeField]
     int playerOnePoints;
@@ -25,15 +26,25 @@ public class WinManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerOnePoints = scoreSave.player1Score;
-        playerTwoPoints = scoreSave.player2Score;
+
+        //winOne = GameObject.FindGameObjectWithTag("Win1");
+        //winTwo = GameObject.FindGameObjectWithTag("Win2");
+        //draft = GameObject.FindGameObjectWithTag("Draft");
+
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 
 
-        winOne = GameObject.FindGameObjectWithTag("Win1");
-        winTwo = GameObject.FindGameObjectWithTag("Win2");
-        draft = GameObject.FindGameObjectWithTag("Draft");
 
-        
+        playerOnePoints = gameManager.player1Score;
+        playerTwoPoints = gameManager.player2Score;
+
+        playerOneName.text = gameManager.player1Name;
+        playerTwoName.text = gameManager.player2Name;
+
+        playerOneScore.text = playerOnePoints.ToString();
+        playerTwoScore.text = playerTwoPoints.ToString();
+
+
     }
 
     // Update is called once per frame
@@ -41,11 +52,11 @@ public class WinManager : MonoBehaviour
     {
         if (playerOnePoints > playerTwoPoints)
         {
-            winTwo.SetActive(true);
+            winOne.SetActive(true);
         }
         else if (playerTwoPoints > playerOnePoints)
         {
-            winOne.SetActive(true);
+            winTwo.SetActive(true);
         }
         else
         {
