@@ -14,7 +14,8 @@ public class ObjectSpawn : MonoBehaviour
 
     public int numberToSpawn;
     public List<GameObject> spawnPool;
-    public GameObject quad;
+    public GameObject quad1;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +45,7 @@ public class ObjectSpawn : MonoBehaviour
     {
         int randomItem = 0;
         GameObject toSpawn;
-        MeshCollider c = quad.GetComponent<MeshCollider>();
+        MeshCollider c = quad1.GetComponent<MeshCollider>();
 
         float screenX, screenY;
         Vector2 pos;
